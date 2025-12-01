@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { products } from '../../products';
 import { NgFor, NgIf } from '@angular/common';
 import { ProductAlerts } from "../product-alerts/product-alerts";
@@ -11,6 +12,8 @@ import { RouterLink } from "@angular/router";
   styleUrl: './product-list.css',
 })
 export class ProductList {
+
+  
   products=[...products]
 
   share() {
