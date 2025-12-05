@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { products } from '../../products';
+import { Product, products } from '../../products';
 import { NgFor, NgIf } from '@angular/common';
 import { ProductAlerts } from "../product-alerts/product-alerts";
 import { RouterLink } from "@angular/router";
+import { AppService } from '../app-service';
 
 @Component({
   selector: 'app-product-list',
@@ -11,10 +12,21 @@ import { RouterLink } from "@angular/router";
   templateUrl: './product-list.html',
   styleUrl: './product-list.css',
 })
-export class ProductList {
+export class ProductList implements OnInit {
+  products: Product[] = [];
+
+  constructor(private appService: AppService){}
+  
+  ngOnInit(): void {
+    this.appService.getUsers().subscribe((data) =>{
+
+      console.log(data,"data")
+
+      // this.products = data
+    })
+  }
 
   
-  products=[...products]
 
   share() {
   window.alert('The product has been shared!');
